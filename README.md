@@ -75,40 +75,4 @@ docker push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/flask-crud-app:lates
 2. Create an ECS Fargate task definition referencing that image, and run a service with port 5000 exposed.
 3. Access your service via the load balancer or public IP.
 
-License
-MIT or your preferred license.
 
-</details>
-
----
-
-## 2.4 `Dockerfile`
-
-Instructions to build a Docker image running the Flask app.
-
-<details>
-<summary><strong>Dockerfile content</strong></summary>
-
-```dockerfile
-# Use Python 3.9 slim as a base
-FROM python:3.9-slim
-
-# Create a working directory
-WORKDIR /app
-
-# Copy requirements.txt and install dependencies
-COPY requirements.txt /app
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code
-COPY src /app/src
-
-# Expose port 5000
-EXPOSE 5000
-
-# Set environment variables for Flask
-ENV FLASK_APP=src/app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-
-# Run the Flask application
-CMD ["python", "-m", "flask", "run", "--port=5000"]
