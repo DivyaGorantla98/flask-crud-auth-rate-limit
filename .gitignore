@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Mac / Windows files
+.DS_Store
+Thumbs.db
